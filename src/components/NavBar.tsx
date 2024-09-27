@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 export default function NavBar() {
   return (
     <div className='sticky top-0 left-0 w-full bg-blue-50 pt-3 px-2 sm:px-2 z-40'>
@@ -10,7 +12,12 @@ export default function NavBar() {
         -1.5px -1.5px 6px 0 #ffffff`,
         }}
       >
-        <div>Home</div>
+        <Link to='/portfolio' className='pr-3'>
+          portfolio
+        </Link>
+        <Link to='/photography' className='pr-3'>
+          photography
+        </Link>
       </div>
     </div>
   );

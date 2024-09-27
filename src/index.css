@@ -1,4 +1,5 @@
-@import '@fontsource/space-mono';
+@import '@fontsource/space-mono/400.css';
+@import '@fontsource/space-mono/700.css';
 @import '@fontsource/poppins';
 @tailwind base;
 @tailwind components;
@@ -15,8 +16,5 @@
 
 html {
   scrollbar-gutter: stable both-edges;
-}
-
-p {
-  font-family: 'Poppins', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  color: theme(colors.blue.400);
 }

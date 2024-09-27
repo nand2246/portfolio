@@ -1,3 +1,13 @@
-.content {
-  overflow-y: auto;
+.inset-text {
+  text-shadow:
+    -2px -2px 3px #b4becb,
+    2px 2px 3px #ffffff;
+}
+
+@media (max-width: 640px) {
+  .inset-text {
+    text-shadow:
+      -1.5px -1.5px 3px #b4becb,
+      1.5px 1.5px 3px #ffffff;
+  }
 }

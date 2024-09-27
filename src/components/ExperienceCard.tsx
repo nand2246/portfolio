@@ -3,22 +3,34 @@ import { useEffect, useState } from 'react';
 
 const animateCard: Variants = {
   initial: {
-    boxShadow: '0px 0px 0 #000000',
+    boxShadow: `0px 0px 0px 0 #cbd1d9 inset,
+                0px 0px 0px 0 #ffffff inset,
+                0px 0px 0px 0 #cbd1d9,
+                0px 0px 0px 0 #ffffff`,
     height: 0,
-    outlineWidth: '0px',
   },
   animateBoxShadow: {
-    boxShadow: '20px 20px 0 #000000',
-    outlineWidth: '3px',
-    transition: { delay: 0.6, duration: 0.3 },
+    boxShadow: `4.5px 4.5px 6px 0 #cbd1d9 inset,
+                -5.25px -5.25px 9px 0 #ffffff inset,
+                -4.5px -4.5px 10.5px 0 #cbd1d9,
+                2.25px 2.25px 9px 0 #ffffff`,
+    transition: {
+      type: 'spring',
+      bounce: 0.6,
+      delay: 0.25,
+      duration: 1.5,
+    },
   },
   animateCardHeight: {
     height: 'auto',
-    transition: { duration: 0.3 },
+    transition: { duration: 0.25 },
   },
-  closeCardHeight: { height: 0, transition: { delay: 0.3, duration: 0.3 } },
+  closeCardHeight: { height: 0, transition: { delay: 0.3, duration: 0.25 } },
   removeBoxShadow: {
-    boxShadow: '0px 0px 0 #000000',
+    boxShadow: `0px 0px 0px 0 #cbd1d9 inset,
+                0px 0px 0px 0 #ffffff inset,
+                0px 0px 0px 0 #cbd1d9,
+                0px 0px 0px 0 #ffffff`,
     outlineWidth: '0px',
     transition: { duration: 0.3 },
   },
@@ -26,9 +38,13 @@ const animateCard: Variants = {
 
 const animateText: Variants = {
   initial: { opacity: 0 },
-  animate: { opacity: 1, transition: { delay: 0.3, duration: 0.3 } },
+  animate: {
+    opacity: 1,
+    transition: { delay: 0.25, duration: 0.6 },
+  },
   exit: { opacity: 0 },
 };
+
 const animatePadding: Variants = {
   initial: { paddingBottom: '0rem' },
   animate: {
@@ -84,24 +100,42 @@ export default function ExperienceCard({
             initial='initial'
             animate={['animateBoxShadow', 'animateCardHeight']}
             exit={['closeCardHeight', 'removeBoxShadow']}
-            className='card bg-indigo-400 outline rounded-md text-3xl'
+            className='card rounded-3xl text-3xl'
           >
             <motion.div
               variants={animateText}
               initial='initial'
               animate='animate'
               exit='exit'
-              className='p-3'
+              className='px-6 sm:px-10 pt-3 sm:pt-7 pb-3'
             >
               <div className='py-2'>
-                <h2>{title}</h2>
-                <h2 className='pt-1 text-xl'>{company}</h2>
+                <h2 className='text-blue-200 inset-text font-mono text-3xl sm:text-5xl'>
+                  {title}
+                </h2>
+                <h2 className='pt-1 sm:pt-3 text-sm sm:text-xl'>{company}</h2>
               </div>
-              <div className='w-fit py-1 px-2 bg-orange-50 rounded-md outline text-xs'>
-                {primaryTag}
+              <div className='pt-1'>
+                <div
+                  className='w-fit py-1.5 px-3 rounded-md text-xs sm:text-sm'
+                  style={{
+                    boxShadow: `-3px -3px 7px 0 #cbd1d9 inset,
+                                3.5px 3.5px 6px 0 #ffffff inset,
+                                -3px -3px 7px 0 #cbd1d9,
+                                3.5px 3.5px 6px 0 #ffffff`,
+                  }}
+                >
+                  {primaryTag}
+                </div>
               </div>
-              <div className='text-lg'>
-                {technologies.map((technology: string) => `${technology}, `)}
+              <div className='text-sm sm:text-lg pt-1.5'>
+                {technologies.map(
+                  (technology: string, index: number) =>
+                    `${technology}${index === technologies.length - 1 ? '' : ', '}`
+                )}
+              </div>
+              <div className='text-center text-xs text-blue-300 sm:text-sm pt-2'>
+                click the card to expand
               </div>
               <AnimatePresence>
                 {expanded && (
@@ -117,7 +151,7 @@ export default function ExperienceCard({
                       initial='initial'
                       animate='animate'
                       exit='exit'
-                      className='text-base'
+                      className='pb-4'
                     >
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                       Etiam vitae pellentesque purus. Suspendisse at convallis

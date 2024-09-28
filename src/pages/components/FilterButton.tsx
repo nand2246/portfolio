@@ -8,9 +8,8 @@ const animateFilterButton: Variants = {
                 3px 3px 7px 0 #c9c6d8,
                 -1.5px -1.5px 6px 0 #ffffff`,
     transition: {
-      type: 'spring',
+      type: 'linear',
       bounce: 0.7,
-      delay: 0.25,
       duration: 1.5,
     },
   },
@@ -20,9 +19,8 @@ const animateFilterButton: Variants = {
                 -3px -3px 7px 0 #c9c6d8,
                 1.5px 1.5px 6px 0 #ffffff`,
     transition: {
-      type: 'spring',
+      type: 'linear',
       bounce: 0.7,
-      delay: 0.25,
       duration: 1.5,
     },
   },
@@ -45,10 +43,10 @@ export default function FilterButton({
   }, [animate, scope]);
 
   return (
-    <div className='flex-none pb-2.5 pr-2.5 sm:pr-5 sm:pb-5'>
+    <div className='pb-2 pr-2 sm:pr-2.5 sm:pb-2.5'>
       <div
         ref={scope}
-        className={`text-xs p-2 sm:text-base sm:p-3 sm:pb-3 rounded-lg`}
+        className={`text-xs sm:text-base px-2.5 py-2 rounded-lg sm:rounded-xl`}
         onClick={() => {
           if (isActive) {
             handleRemove();

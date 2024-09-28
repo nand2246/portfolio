@@ -15,25 +15,23 @@ const animateCard: Variants = {
                 -4.5px -4.5px 10.5px 0 #cbd1d9,
                 2.25px 2.25px 9px 0 #ffffff`,
     transition: {
-      type: 'spring',
-      bounce: 0.6,
+      type: 'linear',
       delay: 0.25,
-      duration: 1.5,
+      duration: 0.3,
     },
+  },
+  removeBoxShadow: {
+    boxShadow: `0px 0px 0px 0 #cbd1d9 inset,
+                0px 0px 0px 0 #ffffff inset,
+                0px 0px 0px 0 #cbd1d9,
+                0px 0px 0px 0 #ffffff`,
+    transition: { duration: 0.3 },
   },
   animateCardHeight: {
     height: 'auto',
     transition: { duration: 0.25 },
   },
   closeCardHeight: { height: 0, transition: { delay: 0.3, duration: 0.25 } },
-  removeBoxShadow: {
-    boxShadow: `0px 0px 0px 0 #cbd1d9 inset,
-                0px 0px 0px 0 #ffffff inset,
-                0px 0px 0px 0 #cbd1d9,
-                0px 0px 0px 0 #ffffff`,
-    outlineWidth: '0px',
-    transition: { duration: 0.3 },
-  },
 };
 
 const animateText: Variants = {
@@ -59,6 +57,7 @@ type ExperienceCardProps = {
   company: string | undefined;
   primaryTag: string;
   technologies: string[];
+  responsibilities: string[];
   activeTags: string[];
 };
 
@@ -67,22 +66,23 @@ export default function ExperienceCard({
   company,
   primaryTag,
   technologies,
+  responsibilities,
   activeTags,
 }: ExperienceCardProps) {
+  const [visible, setVisible] = useState(true);
+  const [expanded, setExpanded] = useState(false);
+
   useEffect(() => {
     if (activeTags.length === 0) {
       setVisible(true);
     } else {
       setVisible(false);
 
-      if (activeTags.every((tag) => technologies.includes(tag))) {
+      if (activeTags.find((tag) => technologies.includes(tag))) {
         setVisible(true);
       }
     }
   }, [activeTags, technologies]);
-
-  const [visible, setVisible] = useState(true);
-  const [expanded, setExpanded] = useState(false);
 
   return (
     <AnimatePresence>
@@ -92,7 +92,7 @@ export default function ExperienceCard({
           initial='initial'
           animate='animate'
           exit='exit'
-          className='pb-10 w-full'
+          className='pb-10'
           onClick={() => setExpanded(!expanded)}
         >
           <motion.div
@@ -100,41 +100,49 @@ export default function ExperienceCard({
             initial='initial'
             animate={['animateBoxShadow', 'animateCardHeight']}
             exit={['closeCardHeight', 'removeBoxShadow']}
-            className='card rounded-3xl text-3xl'
+            className='rounded-2xl'
           >
             <motion.div
               variants={animateText}
               initial='initial'
               animate='animate'
               exit='exit'
-              className='px-6 sm:px-10 pt-3 sm:pt-7 pb-3'
+              className='flex flex-col px-6 py-4'
             >
-              <div className='py-2'>
-                <h2 className='text-blue-200 inset-text font-mono text-3xl sm:text-5xl'>
+              <div className='flex flex-col sm:flex-row'>
+                <h2 className='flex-auto sm:mr-14 my-auto text-blue-200 inset-text-sm font-mono text-2xl sm:text-4xl'>
                   {title}
                 </h2>
-                <h2 className='pt-1 sm:pt-3 text-sm sm:text-xl'>{company}</h2>
-              </div>
-              <div className='pt-1'>
-                <div
-                  className='w-fit py-1.5 px-3 rounded-md text-xs sm:text-sm'
-                  style={{
-                    boxShadow: `-3px -3px 7px 0 #cbd1d9 inset,
-                                3.5px 3.5px 6px 0 #ffffff inset,
-                                -3px -3px 7px 0 #cbd1d9,
-                                3.5px 3.5px 6px 0 #ffffff`,
-                  }}
-                >
-                  {primaryTag}
+                <div className='flex flex-col flex-auto'>
+                  <h2 className='flex-1 basis-1/2 text-left sm:text-right text-lg sm:text-xl'>
+                    {company}
+                  </h2>
+                  <h2 className='flex-1 basis-1/2 text-left sm:text-right text-xs sm:text-sm'>
+                    {primaryTag}
+                  </h2>
                 </div>
               </div>
-              <div className='text-sm sm:text-lg pt-1.5'>
-                {technologies.map(
-                  (technology: string, index: number) =>
-                    `${technology}${index === technologies.length - 1 ? '' : ', '}`
-                )}
+
+              <div className='text-sm sm:text-lg pt-1 sm:pt-3'>
+                <div className='text-base sm:text-lg'>technologies:</div>
+                <div className='flex flex-wrap pt-2'>
+                  {technologies.map((technology: string) => (
+                    <div
+                      key={technology}
+                      className='w-fit pt-1.5 pb-2 pl-2 pr-2.5 mr-2 mb-2 rounded-lg sm:rounded-xl text-xs sm:text-sm'
+                      style={{
+                        boxShadow: `-3px -3px 7px 0 #cbd1d9 inset,
+                                    3.5px 3.5px 6px 0 #ffffff inset,
+                                    -3px -3px 7px 0 #cbd1d9,
+                                    3.5px 3.5px 6px 0 #ffffff`,
+                      }}
+                    >
+                      {technology}
+                    </div>
+                  ))}
+                </div>
               </div>
-              <div className='text-center text-xs text-blue-300 sm:text-sm pt-2'>
+              <div className='text-center text-xs sm:text-sm pt-2'>
                 click the card to expand
               </div>
               <AnimatePresence>
@@ -144,30 +152,21 @@ export default function ExperienceCard({
                     initial='initial'
                     animate='animateCardHeight'
                     exit='closeCardHeight'
-                    className='text-base'
                   >
-                    <motion.p
+                    <motion.div
                       variants={animateText}
                       initial='initial'
                       animate='animate'
                       exit='exit'
-                      className='pb-4'
                     >
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Etiam vitae pellentesque purus. Suspendisse at convallis
-                      est, vitae congue quam. Duis euismod suscipit velit non
-                      maximus. Donec hendrerit laoreet turpis vitae vulputate.
-                      Morbi vestibulum ligula ipsum, in feugiat nisl ultrices
-                      vitae. Nullam ac metus condimentum, scelerisque ligula sit
-                      amet, feugiat nisi. Mauris eget dapibus arcu. Quisque nec
-                      velit tristique, vehicula urna eget, iaculis augue.
-                      Pellentesque iaculis vulputate massa ut convallis. Integer
-                      condimentum, quam vel iaculis tincidunt, ipsum dolor
-                      faucibus arcu, eget malesuada ex nunc in velit. Sed nisi
-                      mi, pretium in purus vitae, semper aliquet lectus. Cras
-                      feugiat eros nunc, sed feugiat enim dapibus posuere. Sed
-                      euismod mollis pellentesque.
-                    </motion.p>
+                      <ul className='pt-6 pb-4 pl-4 text-base list-disc'>
+                        {responsibilities.map((responsibility) => (
+                          <li key={responsibility} className='pb-2'>
+                            {responsibility}
+                          </li>
+                        ))}
+                      </ul>
+                    </motion.div>
                   </motion.div>
                 )}
               </AnimatePresence>

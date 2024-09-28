@@ -4,6 +4,12 @@
     2px 2px 3px #ffffff;
 }
 
+.inset-text-sm {
+  text-shadow:
+    -1px -1px 1.5px #b4becb,
+    1px 1px 1.5px #ffffff;
+}
+
 @media (max-width: 640px) {
   .inset-text {
     text-shadow:

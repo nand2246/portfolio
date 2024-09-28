@@ -22,6 +22,15 @@ const animateContent: Variants = {
   exit: { opacity: 0 },
 };
 
+const animatePadding: Variants = {
+  initial: { paddingBottom: '0rem' },
+  animate: {
+    paddingBottom: '2.5rem',
+    transition: { duration: 0.3 },
+  },
+  exit: { paddingBottom: '0rem', transition: { delay: 0.3, duration: 0.3 } },
+};
+
 type ExperienceCardProps = {
   title: string;
   company: string | undefined;
@@ -57,7 +66,15 @@ export default function ExperienceCard({
   return (
     <AnimatePresence>
       {visible && (
-        <div onClick={() => setExpanded(!expanded)}>
+        <motion.div
+          variants={animatePadding}
+          initial='initial'
+          animate='animate'
+          exit='exit'
+          className='pb-10'
+          onClick={() => setExpanded(!expanded)}
+          whileHover={{ cursor: 'pointer' }}
+        >
           <Card>
             <div className='flex flex-col sm:flex-row'>
               <h2 className='flex-auto sm:mr-14 my-auto text-blue-200 inset-text-sm font-mono text-2xl sm:text-4xl'>
@@ -101,7 +118,7 @@ export default function ExperienceCard({
                   variants={animateExpand}
                   initial='initial'
                   animate='animateHeight'
-                  exit='closeCardHeight'
+                  exit='closeHeight'
                 >
                   <motion.div
                     variants={animateContent}
@@ -121,7 +138,7 @@ export default function ExperienceCard({
               )}
             </AnimatePresence>
           </Card>
-        </div>
+        </motion.div>
       )}
     </AnimatePresence>
   );

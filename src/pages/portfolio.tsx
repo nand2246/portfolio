@@ -69,7 +69,7 @@ export default function Portfolio() {
 
   return (
     <GlassTransition>
-      <div className='p-5 max-w-screen-lg mx-auto'>
+      <div className='py-4 px-8 max-w-screen-lg mx-auto'>
         {/* portfolio title text */}
         <h1 className='text-5xl sm:text-7xl text-blue-200 inset-text text-center font-mono pb-6 sm:pb-10'>
           projects

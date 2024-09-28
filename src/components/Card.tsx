@@ -43,44 +43,27 @@ const animateContent: Variants = {
   exit: { opacity: 0 },
 };
 
-const animatePadding: Variants = {
-  initial: { paddingBottom: '0rem' },
-  animate: {
-    paddingBottom: '2.5rem',
-    transition: { duration: 0.3 },
-  },
-  exit: { paddingBottom: '0rem', transition: { delay: 0.3, duration: 0.3 } },
-};
-
-export default function ExperienceCard({
+export default function Card({
   children,
 }: {
   children: ReactElement | ReactElement[];
 }) {
   return (
     <motion.div
-      variants={animatePadding}
+      variants={animateCard}
       initial='initial'
-      animate='animate'
-      exit='exit'
-      className='pb-10'
+      animate={['animateBoxShadow', 'animateCardHeight']}
+      exit={['closeCardHeight', 'removeBoxShadow']}
+      className='rounded-[2rem]'
     >
       <motion.div
-        variants={animateCard}
+        variants={animateContent}
         initial='initial'
-        animate={['animateBoxShadow', 'animateCardHeight']}
-        exit={['closeCardHeight', 'removeBoxShadow']}
-        className='rounded-[2rem]'
+        animate='animate'
+        exit='exit'
+        className='px-6 py-4'
       >
-        <motion.div
-          variants={animateContent}
-          initial='initial'
-          animate='animate'
-          exit='exit'
-          className='px-6 py-4'
-        >
-          {children}
-        </motion.div>
+        {children}
       </motion.div>
     </motion.div>
   );

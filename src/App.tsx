@@ -1,6 +1,7 @@
 import './App.css';
 import { AnimatePresence } from 'framer-motion';
 import Portfolio from './pages/portfolio';
+import Photography from './pages/photography';
 import { useLocation, useRoutes } from 'react-router-dom';
 import { cloneElement } from 'react';
 import GlassTransition from './components/GlassTransition';
@@ -18,11 +19,7 @@ function App() {
     },
     {
       path: '/photography',
-      element: (
-        <GlassTransition>
-          <div>photos</div>
-        </GlassTransition>
-      ),
+      element: <Photography />,
     },
     {
       path: '*',

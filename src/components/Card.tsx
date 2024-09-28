@@ -61,7 +61,6 @@ export default function Card({
         initial='initial'
         animate='animate'
         exit='exit'
-        className='px-6 py-4'
       >
         {children}
       </motion.div>

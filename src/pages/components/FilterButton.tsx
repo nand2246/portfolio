@@ -44,9 +44,9 @@ export default function FilterButton({
 
   return (
     <div className='pb-2 pr-2 sm:pr-2.5 sm:pb-2.5'>
-      <div
+      <button
         ref={scope}
-        className={`text-xs sm:text-base px-2.5 py-2 rounded-lg sm:rounded-xl`}
+        className={`text-xs sm:text-base px-2.5 py-2 rounded-xl sm:rounded-2xl`}
         onClick={() => {
           if (isActive) {
             handleRemove();
@@ -59,7 +59,7 @@ export default function FilterButton({
         }}
       >
         {tag}
-      </div>
+      </button>
     </div>
   );
 }

@@ -78,7 +78,7 @@ export default function Portfolio() {
         {/* filters */}
         <div className='flex flex-wrap sm:flex-nowrap text-center sm:text-left pb-10'>
           <div className='basis-full sm:basis-0 pb-2 sm:pr-4'>
-            <div className='font-mono text-2xl sm:text-3xl'>filters:</div>
+            <div className='text-2xl sm:text-3xl'>filters:</div>
           </div>
           <div className='flex flex-col'>
             <div className='flex flex-wrap justify-left sm:justify-end px-3 sm:px-0'>
@@ -99,7 +99,7 @@ export default function Portfolio() {
             </div>
             <div className='flex justify-start sm:justify-end pt-3 pl-3 pr-3'>
               <div
-                className={`text-xs sm:text-base px-2.5 py-2 rounded-lg sm:rounded-xl ${
+                className={`text-xs sm:text-base px-2.5 py-2 rounded-xl sm:rounded-2xl ${
                   activeTags.length === 0 ? 'text-slate-300' : ''
                 }`}
                 style={{

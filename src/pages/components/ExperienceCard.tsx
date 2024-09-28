@@ -100,7 +100,7 @@ export default function ExperienceCard({
             initial='initial'
             animate={['animateBoxShadow', 'animateCardHeight']}
             exit={['closeCardHeight', 'removeBoxShadow']}
-            className='rounded-2xl'
+            className='rounded-[2rem]'
           >
             <motion.div
               variants={animateText}
@@ -108,6 +108,7 @@ export default function ExperienceCard({
               animate='animate'
               exit='exit'
               className='flex flex-col px-6 py-4'
+              whileHover={{ cursor: 'pointer' }}
             >
               <div className='flex flex-col sm:flex-row'>
                 <h2 className='flex-auto sm:mr-14 my-auto text-blue-200 inset-text-sm font-mono text-2xl sm:text-4xl'>
@@ -129,7 +130,7 @@ export default function ExperienceCard({
                   {technologies.map((technology: string) => (
                     <div
                       key={technology}
-                      className='w-fit pt-1.5 pb-2 pl-2 pr-2.5 mr-2 mb-2 rounded-lg sm:rounded-xl text-xs sm:text-sm'
+                      className='w-fit pt-1.5 pb-2 pl-2 pr-2.5 mr-2 mb-2 rounded-xl text-xs sm:text-sm'
                       style={{
                         boxShadow: `-3px -3px 7px 0 #cbd1d9 inset,
                                     3.5px 3.5px 6px 0 #ffffff inset,

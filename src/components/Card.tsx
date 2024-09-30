@@ -27,11 +27,11 @@ const animateCard: Variants = {
                 0px 0px 0px 0 #ffffff`,
     transition: { duration: 0.3 },
   },
-  animateCardHeight: {
+  animateHeight: {
     height: 'auto',
     transition: { duration: 0.25 },
   },
-  closeCardHeight: { height: 0, transition: { delay: 0.3, duration: 0.25 } },
+  closeHeight: { height: 0, transition: { delay: 0.3, duration: 0.25 } },
 };
 
 const animateContent: Variants = {
@@ -52,8 +52,8 @@ export default function Card({
     <motion.div
       variants={animateCard}
       initial='initial'
-      animate={['animateBoxShadow', 'animateCardHeight']}
-      exit={['closeCardHeight', 'removeBoxShadow']}
+      animate={['animateBoxShadow', 'animateHeight']}
+      exit={['closeHeight', 'removeBoxShadow']}
       className='rounded-[2rem]'
     >
       <motion.div

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import FilterButton from './components/FilterButton';
 import ExperienceCard from './components/ExperienceCard';
-import GlassTransition from '../components/GlassTransition';
+import GlassTransition from '../../components/GlassTransition';
 
 const experiences = [
   {
@@ -71,7 +71,7 @@ export default function Portfolio() {
     <GlassTransition>
       <div className='py-4 px-8 max-w-screen-lg mx-auto'>
         {/* portfolio title text */}
-        <h1 className='text-5xl sm:text-7xl text-blue-200 inset-text text-center font-mono pb-6 sm:pb-10'>
+        <h1 className='text-5xl sm:text-7xl inset-text text-center font-mono pb-6 sm:pb-10'>
           projects
         </h1>
 

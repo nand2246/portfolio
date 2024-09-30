@@ -1,19 +1,28 @@
 .inset-text {
   text-shadow:
-    -2px -2px 3px #b4becb,
-    2px 2px 3px #ffffff;
+    -1.75px -1.75px 3px #01557e,
+    1.75px 1.75px 3px #ffffff;
+  color: #0298e3;
 }
 
 .inset-text-sm {
   text-shadow:
-    -1px -1px 1.5px #b4becb,
+    -1px -1px 1.5px #01557e,
     1px 1px 1.5px #ffffff;
+  color: #0298e3;
 }
 
 @media (max-width: 640px) {
   .inset-text {
     text-shadow:
-      -1.5px -1.5px 3px #b4becb,
-      1.5px 1.5px 3px #ffffff;
+      -1.5px -1.5px 2.25px #01557e,
+      1.5px 1.5px 2.25px #ffffff;
+    color: #0298e3;
   }
+
+  /* .inset-text-sm {
+    text-shadow:
+      -0.75px -0.75px 1.125px #01557e,
+      0.75px 0.75px 1.125px #ffffff;
+  } */
 }

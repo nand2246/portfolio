@@ -1,6 +1,6 @@
 import './App.css';
 import { AnimatePresence } from 'framer-motion';
-import Portfolio from './pages/portfolio';
+import Portfolio from './pages/portfolio/portfolio';
 import Photography from './pages/photography';
 import { useLocation, useRoutes } from 'react-router-dom';
 import { cloneElement } from 'react';

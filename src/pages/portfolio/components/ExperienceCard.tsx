@@ -1,6 +1,6 @@
 import { AnimatePresence, motion, Variants } from 'framer-motion';
 import { useEffect, useState } from 'react';
-import Card from '../../components/Card';
+import Card from '../../../components/Card';
 
 const animateExpand: Variants = {
   initial: {
@@ -71,14 +71,12 @@ export default function ExperienceCard({
           initial='initial'
           animate='animate'
           exit='exit'
-          className='pb-10'
           onClick={() => setExpanded(!expanded)}
-          whileHover={{ cursor: 'pointer' }}
         >
           <Card>
-            <div className='px-6 py-4'>
+            <div className='px-6 py-4 cursor-pointer'>
               <div className='flex flex-col sm:flex-row'>
-                <h2 className='flex-auto sm:mr-14 my-auto text-blue-200 inset-text-sm font-mono text-2xl sm:text-4xl'>
+                <h2 className='flex-auto sm:mr-14 my-auto inset-text-sm font-mono italic text-3xl sm:text-4xl'>
                   {title}
                 </h2>
                 <div className='flex flex-col flex-auto'>

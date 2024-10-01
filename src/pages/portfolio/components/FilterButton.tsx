@@ -27,11 +27,11 @@ const animateFilterButton: Variants = {
 };
 
 export default function FilterButton({
-  tag,
+  filter,
   handleAdd,
   handleRemove,
 }: {
-  tag: string;
+  filter: string;
   handleAdd: () => void;
   handleRemove: () => void;
 }) {
@@ -58,7 +58,7 @@ export default function FilterButton({
           setIsActive(!isActive);
         }}
       >
-        {tag}
+        {filter}
       </button>
     </div>
   );

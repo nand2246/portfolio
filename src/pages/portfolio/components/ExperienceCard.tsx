@@ -25,7 +25,7 @@ const animateContent: Variants = {
 const animatePadding: Variants = {
   initial: { paddingBottom: '0rem' },
   animate: {
-    paddingBottom: '2.5rem',
+    paddingBottom: '2rem',
     transition: { duration: 0.3 },
   },
   exit: { paddingBottom: '0rem', transition: { delay: 0.3, duration: 0.3 } },
@@ -34,34 +34,42 @@ const animatePadding: Variants = {
 type ExperienceCardProps = {
   title: string;
   company: string | undefined;
-  primaryTag: string;
-  technologies: string[];
+  type: string;
+  technologies: string[] | undefined;
   responsibilities: string[];
-  activeTags: string[];
+  activeTypes: string[];
+  activeTechnologies: string[];
 };
 
 export default function ExperienceCard({
   title,
   company,
-  primaryTag,
+  type,
   technologies,
   responsibilities,
-  activeTags,
+  activeTypes,
+  activeTechnologies,
 }: ExperienceCardProps) {
   const [visible, setVisible] = useState(true);
   const [expanded, setExpanded] = useState(false);
 
   useEffect(() => {
-    if (activeTags.length === 0) {
+    if (activeTypes.length === 0 && activeTechnologies.length === 0) {
       setVisible(true);
     } else {
       setVisible(false);
 
-      if (activeTags.find((tag) => technologies.includes(tag))) {
+      if (
+        activeTypes.find((activeType) => activeType === type) ||
+        activeTechnologies.find(
+          (activeTechnology) =>
+            technologies && technologies.includes(activeTechnology)
+        )
+      ) {
         setVisible(true);
       }
     }
-  }, [activeTags, technologies]);
+  }, [technologies, activeTypes, activeTechnologies, type]);
 
   return (
     <AnimatePresence>
@@ -84,29 +92,33 @@ export default function ExperienceCard({
                     {company}
                   </h2>
                   <h2 className='flex-1 basis-1/2 text-left sm:text-right text-xs sm:text-sm'>
-                    {primaryTag}
+                    {type}
                   </h2>
                 </div>
               </div>
 
               <div className='text-sm sm:text-lg pt-1 sm:pt-3'>
-                <div className='text-base sm:text-lg'>technologies:</div>
-                <div className='flex flex-wrap pt-2'>
-                  {technologies.map((technology: string) => (
-                    <div
-                      key={technology}
-                      className='w-fit pt-1.5 pb-2 pl-2 pr-2.5 mr-2 mb-2 rounded-xl text-xs sm:text-sm'
-                      style={{
-                        boxShadow: `-3px -3px 7px 0 #cbd1d9 inset,
-                                    3.5px 3.5px 6px 0 #ffffff inset,
-                                    -3px -3px 7px 0 #cbd1d9,
-                                    3.5px 3.5px 6px 0 #ffffff`,
-                      }}
-                    >
-                      {technology}
+                {technologies && (
+                  <>
+                    <div className='text-base sm:text-lg'>technologies:</div>
+                    <div className='flex flex-wrap pt-2'>
+                      {technologies.map((technology: string) => (
+                        <div
+                          key={technology}
+                          className='w-fit pt-1.5 pb-2 pl-2 pr-2.5 mr-2 mb-2 rounded-xl text-xs sm:text-sm'
+                          style={{
+                            boxShadow: `-3px -3px 7px 0 #cbd1d9 inset,
+                                        3.5px 3.5px 6px 0 #ffffff inset,
+                                        -3px -3px 7px 0 #cbd1d9,
+                                        3.5px 3.5px 6px 0 #ffffff`,
+                          }}
+                        >
+                          {technology}
+                        </div>
+                      ))}
                     </div>
-                  ))}
-                </div>
+                  </>
+                )}
               </div>
               <div className='text-center text-xs sm:text-sm pt-2'>
                 click the card to expand
@@ -125,9 +137,9 @@ export default function ExperienceCard({
                       animate='animate'
                       exit='exit'
                     >
-                      <ul className='pt-6 pb-4 pl-4 text-sm sm:text-base list-disc'>
+                      <ul className='py-4 pl-4 text-sm sm:text-base list-disc'>
                         {responsibilities.map((responsibility) => (
-                          <li key={responsibility} className='pb-2'>
+                          <li key={responsibility} className='pt-2'>
                             {responsibility}
                           </li>
                         ))}

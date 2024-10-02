@@ -145,7 +145,7 @@ const experiences = [
     responsibilities: [
       'Created a web-based application that allows users to create pages filled with notes and share those pages with their peers.',
       'HTML / JavaScript front-end, backed by the Axios library to handle HTTP requests.',
-      'Given just 24 hours to complete the project, this hackathon presented the challenge of working together in a group with very little time.    ],',
+      'Given just 24 hours to complete the project, this hackathon presented the challenge of working together in a group with very little time.',
     ],
   },
 ];

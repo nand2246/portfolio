@@ -14,10 +14,14 @@ export default function NavBar() {
         }}
       >
         <div className='flex-auto w-1/2 flex items-center'>
-          <Link to='/portfolio' className='pr-3 text-base sm:text-xl'>
+          <Link
+            to='/portfolio'
+            className='sm:pl-3 pr-1 sm:pr-3 text-base sm:text-xl'
+          >
             portfolio
           </Link>
-          <Link to='/photography' className='pr-3 text-base sm:text-xl'>
+          <div className='pr-1 sm:pr-3 text-base sm:text-xl'>|</div>
+          <Link to='/photography' className='text-base sm:text-xl'>
             photography
           </Link>
         </div>

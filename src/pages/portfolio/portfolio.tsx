@@ -54,10 +54,9 @@ const experiences = [
     type: 'hackathon project',
     technologies: ['next.js', 'prisma'],
     responsibilities: [
-      'Collaborated with a team of developers to create an Android and iOS application using React Native.',
-      'Built RESTful APIs that served data to the React Native front-end based on dynamically chosen user input that handled several concurrent users.',
-      'Managed SEO for the company website, implementing the usage of several utilities such as image optimization and structured schema markup data to the site.',
-      'Implemented Git and SSH access hosted on the company server and assisted colleagues with initializing these services with their systems.',
+      'Developed an application allowing users to create small scale local events, fostering a traditional sense of community and togetherness.',
+      'Brainstormed & established requirements for a web-based platform to facilitate local community engagement through casual event planning.',
+      'Designed & implemented a basic working prototype including user authentication (Auth0) and database integration.',
     ],
   },
   {

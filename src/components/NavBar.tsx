@@ -38,7 +38,7 @@ export default function NavBar() {
             }}
           >
             <a href='https://github.com/nand2246'>
-              <img src='/github-logo.png' className='w-fit h' />
+              <img src='/github-logo.webp' className='w-fit h' />
             </a>
           </motion.div>
 
@@ -58,7 +58,7 @@ export default function NavBar() {
             }}
           >
             <a href='https://www.linkedin.com/in/nandrpatel/'>
-              <img src='/linkedin.png' className='w-fit h' />
+              <img src='/linkedin.webp' className='w-fit h' />
             </a>
           </motion.div>
         </div>

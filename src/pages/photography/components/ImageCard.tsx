@@ -31,6 +31,7 @@ export default function ImageCard({
       <img
         className='object-cover min-h-full min-w-full rounded-2xl'
         src={image}
+        loading='lazy'
       />
     </div>
   );

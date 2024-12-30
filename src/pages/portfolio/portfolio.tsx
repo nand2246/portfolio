@@ -5,6 +5,18 @@ import GlassTransition from '../../components/GlassTransition';
 
 const experiences = [
   {
+    title: 'full stack software engineer',
+    company: 'squareknotanalytics',
+    dates: 'november 2024 - current',
+    type: 'work experience',
+    technologies: ['flutter mobile/web', 'aws', 'python', 'flask', 'mySQL'],
+    responsibilities: [
+      'Worked with a team of three to build a responsive web app from existing mobile layouts, with the goal of increasing user engagement and retention.',
+      'Secured AWS resources, mitigating penetration testing vulnerabilities by 66% by implementing TLS Redis connections and rebuilding containers with excessive permissions. ',
+      'Successfully led the front-end and infrastructure development of a progressive web app from the ground up and launched in three weeks, resulting in 100+ user sign-ups within two weeks.',
+    ],
+  },
+  {
     title: 'devops engineer',
     company: 'lifebooster',
     dates: 'january - august 2023',

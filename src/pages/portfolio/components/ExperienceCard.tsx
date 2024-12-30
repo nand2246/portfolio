@@ -79,7 +79,12 @@ export default function ExperienceCard({
           initial='initial'
           animate='animate'
           exit='exit'
-          onClick={() => setExpanded(!expanded)}
+          onClick={() => {
+            const selectedText = document.getSelection();
+            if (selectedText && selectedText.type === 'Range') return; // prevent close if text is selected
+            setExpanded(!expanded);
+          }}
+          onDragEnter={(e) => e.preventDefault()}
         >
           <Card>
             <div className='px-6 py-4 cursor-pointer'>
